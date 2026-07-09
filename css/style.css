@@ -1824,7 +1824,7 @@ body.modal-open { overflow: hidden; }
 .weather-search-row button:disabled { opacity: .5; cursor: default; }
 
 /* ── Loader ───────────────────────────────────────────────── */
-.weather-loader {
+.weather-loader:not([hidden]) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1843,7 +1843,7 @@ body.modal-open { overflow: hidden; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── Weather Error ─────────────────────────────────────────── */
-.weather-error {
+.weather-error:not([hidden]) {
   display: flex;
   align-items: center;
   gap: 10px;
