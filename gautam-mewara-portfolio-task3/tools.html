@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Created by Gautam Mewara -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = stored || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) { /* localStorage unavailable */ }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive Tools by Gautam Mewara — Weather App (OpenWeatherMap API) and Todo List with localStorage persistence. Task 3 — API Integration &amp; Mini Applications." />
+  <title>Interactive Tools — Gautam Mewara</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Load API key config BEFORE any app scripts -->
+  <script src="js/config.js"></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="index.html" class="nav-logo">GM<span>.</span></a>
+
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="tools.html" class="active" aria-current="page">Tools</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <button class="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+          <span class="theme-icon theme-icon-dark" aria-hidden="true">🌙</span>
+          <span class="theme-icon theme-icon-light" aria-hidden="true">☀️</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ══ PAGE HERO ══════════════════════════════════════════ -->
+    <section class="tools-hero" aria-labelledby="tools-page-heading">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Tools</span>
+        </nav>
+        <p class="tag">Task 3 — API Integration &amp; Mini Applications</p>
+        <h1 class="section-title" id="tools-page-heading">Interactive Tools</h1>
+        <p class="section-subtitle">
+          Two mini-apps built with Vanilla JavaScript — live weather data via the OpenWeatherMap API
+          and a persistent to-do list using localStorage. Both were built as part of ApexPlanet Task 3.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══ TOOLS GRID ════════════════════════════════════════ -->
+    <section class="section" style="padding-top:0;" aria-label="Mini Applications">
+      <div class="container">
+        <div class="tools-grid">
+
+          <!-- ── WEATHER APP ─────────────────────────────────── -->
+          <div class="app-card glass" id="weather-app">
+            <div class="app-card-header">
+              <span class="app-card-icon" aria-hidden="true">🌤️</span>
+              <div>
+                <h2>Weather App</h2>
+                <p>Live weather via OpenWeatherMap API · Async/Await · Fetch</p>
+              </div>
+            </div>
+            <div class="app-card-body">
+
+              <!-- API key missing notice (hidden by default, shown by JS if key is placeholder) -->
+              <div class="api-notice" id="weather-api-missing" hidden>
+                <span aria-hidden="true">⚠️</span>
+                <span>
+                  <strong>API Key Required.</strong><br/>
+                  Open <code>js/config.js</code> and replace <code>YOUR_OPENWEATHER_API_KEY</code>
+                  with your free key from
+                  <a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer"
+                     style="color:var(--sky-light);">openweathermap.org/api</a>.
+                  Then reload the page.
+                </span>
+              </div>
+
+              <!-- Search form -->
+              <form id="weather-form" novalidate>
+                <div class="weather-search-row">
+                  <input
+                    type="text"
+                    id="weather-city-input"
+                    name="city"
+                    placeholder="Enter city name…"
+                    autocomplete="off"
+                    aria-label="City name"
+                    maxlength="100"
+                  />
+                  <button type="submit" aria-label="Search weather">Search</button>
+                </div>
+              </form>
+
+              <!-- Loading indicator -->
+              <div class="weather-loader" id="weather-loader" hidden aria-live="polite" aria-label="Loading weather data">
+                <div class="spinner" aria-hidden="true"></div>
+                <span>Fetching weather…</span>
+              </div>
+
+              <!-- Error message -->
+              <p class="weather-error" id="weather-error" hidden role="alert" aria-live="assertive"></p>
+
+              <!-- Result card -->
+              <div class="weather-result" id="weather-result" hidden aria-live="polite">
+                <div class="weather-main">
+                  <img class="weather-icon" id="w-icon" src="" alt="" />
+                  <div>
+                    <div class="weather-temp" id="w-temp"></div>
+                    <div class="weather-desc" id="w-desc"></div>
+                    <div class="weather-city-name" id="w-city"></div>
+                  </div>
+                </div>
+                <div class="weather-details">
+                  <div class="weather-detail-item">
+                    <div class="weather-detail-label">Humidity</div>
+                    <div class="weather-detail-value" id="w-humidity"></div>
+                  </div>
+                  <div class="weather-detail-item">
+                    <div class="weather-detail-label">Wind Speed</div>
+                    <div class="weather-detail-value" id="w-wind"></div>
+                  </div>
+                  <div class="weather-detail-item" style="border-right:none;">
+                    <div class="weather-detail-label">Feels Like</div>
+                    <div class="weather-detail-value" id="w-feels"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── TODO LIST APP ───────────────────────────────── -->
+          <div class="app-card glass" id="todo-app">
+            <div class="app-card-header">
+              <span class="app-card-icon" aria-hidden="true">✅</span>
+              <div>
+                <h2>Todo List</h2>
+                <p>Add · Edit · Delete · Filter · localStorage persistence</p>
+              </div>
+            </div>
+            <div class="app-card-body">
+
+              <!-- Add task form -->
+              <form id="todo-add-form" novalidate>
+                <div class="todo-add-row">
+                  <input
+                    type="text"
+                    id="todo-add-input"
+                    name="task"
+                    placeholder="Add a new task…"
+                    autocomplete="off"
+                    aria-label="New task"
+                    maxlength="200"
+                    required
+                  />
+                  <button type="submit" aria-label="Add task">+</button>
+                </div>
+              </form>
+
+              <!-- Meta row: count, filters, clear done -->
+              <div class="todo-meta-row">
+                <span class="todo-count" id="todo-count" aria-live="polite">0 tasks left</span>
+                <div class="todo-filters" role="group" aria-label="Filter tasks">
+                  <button class="todo-filter-btn todo-filter-btn--active" data-filter="all" type="button">All</button>
+                  <button class="todo-filter-btn" data-filter="active" type="button">Active</button>
+                  <button class="todo-filter-btn" data-filter="completed" type="button">Completed</button>
+                </div>
+                <button class="todo-clear-btn" id="todo-clear-done" type="button">Clear done</button>
+              </div>
+
+              <!-- Task list -->
+              <ul class="todo-list" id="todo-list" aria-label="Tasks" aria-live="polite">
+                <li class="todo-empty" id="todo-empty">No tasks yet. Add one above!</li>
+              </ul>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TASK 3 INFO SECTION ═══════════════════════════════ -->
+    <section class="section" style="background:var(--navy-mid);" aria-labelledby="task3-info-heading">
+      <div class="container">
+        <div class="text-center">
+          <p class="tag">ApexPlanet Task 3</p>
+          <h2 class="section-title" id="task3-info-heading">What I Built &amp; Learned</h2>
+          <p class="section-subtitle">
+            Task 3 focused on Async JavaScript, the Fetch API, and real-world API integration.
+          </p>
+        </div>
+        <div class="why-grid" style="margin-top:40px;">
+          <div class="why-card glass">
+            <div class="why-icon" aria-hidden="true">⚡</div>
+            <h4>Async / Await</h4>
+            <p>Wrote modern async functions using <code style="color:var(--sky-light); font-size:.82rem;">async/await</code> instead of callback chains, making asynchronous code cleaner and easier to reason about.</p>
+          </div>
+          <div class="why-card glass">
+            <div class="why-icon" aria-hidden="true">🌐</div>
+            <h4>Fetch API</h4>
+            <p>Used the native browser Fetch API to query the OpenWeatherMap Current Weather endpoint, parse JSON, and handle HTTP error codes explicitly.</p>
+          </div>
+          <div class="why-card glass">
+            <div class="why-icon" aria-hidden="true">🛡️</div>
+            <h4>Error Handling</h4>
+            <p>Wrapped every network call in try/catch with user-facing error messages for 404 (city not found), 401 (bad API key), and network failures.</p>
+          </div>
+          <div class="why-card glass">
+            <div class="why-icon" aria-hidden="true">💾</div>
+            <h4>localStorage</h4>
+            <p>Both apps persist state in localStorage. The Weather App remembers the last searched city; the Todo app retains all tasks including their completion status across page reloads.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CTA ════════════════════════════════════════════════ -->
+    <section class="cta-section" aria-labelledby="tools-cta-heading">
+      <div class="container">
+        <p class="tag">Get In Touch</p>
+        <h2 class="section-title" id="tools-cta-heading">Interested in Working Together?</h2>
+        <p class="section-subtitle">I'm continuously learning and building. Feel free to reach out.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary">Contact Me →</a>
+          <a href="projects.html" class="btn btn-outline">View All Projects</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">GM<span>.</span></a>
+          <p>Aspiring web developer building clean, responsive websites with HTML, CSS &amp; JavaScript. Currently pursuing a Web Development Internship at ApexPlanet and continuously improving my frontend development skills.</p>
+          <div class="footer-social">
+            <a href="https://github.com/gautammewara75" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">⌨</a>
+            <a href="https://linkedin.com/in/gautammewara75" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Static Websites</a></li>
+            <li><a href="services.html">Responsive Design</a></li>
+            <li><a href="services.html">Portfolio Sites</a></li>
+            <li><a href="services.html">Landing Pages</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:gautammewara75@gmail.com">gautammewara75@gmail.com</a></li>
+            <li><span>Phone: Available on Request</span></li>
+            <li><a href="contact.html">Send a message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Gautam Mewara. All rights reserved.</p>
+        <p>Designed and Developed by <a href="about.html">Gautam Mewara</a> — Made with HTML &amp; CSS</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+  <!-- App scripts (config.js already loaded in <head>) -->
+  <script src="js/script.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/todo.js"></script>
+</body>
+</html>
