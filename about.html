@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Created by Gautam Mewara -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = stored || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) { /* localStorage unavailable */ }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Gautam Mewara — Computer Science and Cyber Security student, aspiring web developer, learning HTML, CSS, Java and C++." />
+  <title>About — Gautam Mewara</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="index.html" class="nav-logo">GM<span>.</span></a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active" aria-current="page">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+          <span class="theme-icon theme-icon-dark" aria-hidden="true">🌙</span>
+          <span class="theme-icon theme-icon-light" aria-hidden="true">☀️</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ══ PAGE HERO ══════════════════════════════════════════ -->
+    <section class="page-hero" aria-labelledby="page-heading">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">About</span>
+        </nav>
+        <p class="tag">My Story</p>
+        <h1 class="section-title" id="page-heading">About Gautam Mewara</h1>
+        <p class="section-subtitle">A Computer Science student on a journey from writing his first HTML tag to building fully responsive multi-page websites.</p>
+      </div>
+    </section>
+
+    <!-- ══ INTRODUCTION ════════════════════════════════════════ -->
+    <section class="section" aria-label="Introduction">
+      <div class="container">
+        <div class="about-intro-grid">
+
+   <div class="about-profile-card glass">
+    <img src="images/profile.jpg"
+         alt="Gautam Mewara"
+         class="profile-avatar-image">
+
+    <div class="profile-name">Gautam Mewara</div>
+    <div class="profile-role">Aspiring Web Developer & Computer Science and Cyber Security Student</div>
+    <div class="profile-location">📍 Jodhpur, Rajasthan, India</div>
+
+<hr class="profile-divider" />
+
+<div class="profile-info-row">
+    <span>Degree</span>
+    <span>B.Tech Computer Science & Cyber Security</span>
+</div>
+
+<div class="profile-info-row">
+    <span>Year</span>
+    <span>3rd Year(2028 batch)</span>
+</div>
+
+<div class="profile-info-row">
+    <span>Focus</span>
+    <span>Web Development</span>
+</div>
+
+<div class="profile-info-row">
+    <span>Status</span>
+    <span style="color:#4ade80;">● ● Currently Interning at ApexPlanet</span>
+</div>
+
+<hr class="profile-divider" />
+
+<div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:4px;">
+    <span class="skill-tag">HTML5</span>
+    <span class="skill-tag">CSS3</span>
+    <span class="skill-tag">JavaScript</span>
+    <span class="skill-tag">Java</span>
+    <span class="skill-tag">C++</span>
+    <span class="skill-tag">GitHub</span>
+    <span class="skill-tag">Git</span>
+    <span class="skill-tag">Responsive Design</span>
+</div>
+
+<a href="contact.html" class="btn btn-primary"
+   style="width:100%; justify-content:center; margin-top:24px;">
+   Contact Me →
+</a>
+
+</div>
+
+<div class="about-text-content">
+    <p class="tag">Introduction</p>
+
+<h2 class="section-title" id="intro-heading">
+    Hello, I'm Gautam Mewara 👋
+</h2>
+
+<p>
+    I am Gautam Mewara from Jodhpur, Rajasthan, currently pursuing B.Tech in Computer Science & Cyber Security. I am passionate about technology, problem-solving, and building modern websites that are responsive, user-friendly, and visually appealing.
+</p>
+
+<p>
+    My interest in web development started when I became curious about how websites are designed and developed. I began learning HTML and CSS, then gradually explored responsive design, layouts, animations, and JavaScript to create interactive web experiences.
+</p>
+
+<p>
+    Alongside web development, I am also learning Java and C++ through my academic coursework. These technologies have helped me strengthen my programming fundamentals, logical thinking, and problem-solving skills.
+</p>
+
+<p>
+    Currently, I am working as a Web Development Intern at ApexPlanet, where I am gaining practical experience by building real-world projects and improving my frontend development skills.
+</p>
+
+<p>
+    I enjoy learning new technologies, experimenting with modern web design concepts, and continuously improving my development abilities through projects, internships, and hands-on practice.
+</p>
+
+<p>
+    My goal is to become a skilled Full Stack Developer and contribute to impactful software solutions while continuously learning and growing in the technology industry.
+</p>
+
+<a href="contact.html" class="btn btn-outline" style="margin-top:8px;">
+    Let's Connect →
+</a>
+
+        </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ EDUCATION ════════════════════════════════════════ -->
+    <section class="section education-section" aria-labelledby="edu-heading">
+  <div class="container">
+    <p class="tag">Academic Background</p>
+    <h2 class="section-title" id="edu-heading">Education</h2>
+    <p class="section-subtitle">The academic foundation behind the code I write.</p>
+
+<div class="education-list">
+
+  <article class="education-item glass">
+    <div class="edu-year">2024–<br/>Present</div>
+    <div class="edu-content">
+      <h3>B.Tech in Computer Science & Cyber Security</h3>
+      <div class="edu-school">Government Engineering College Ajmer (GECA), Rajasthan</div>
+      <p class="edu-desc">
+        Currently pursuing B.Tech in Computer Science & Cyber Security. I have successfully completed my fourth semester and am preparing to begin the fifth semester. Through both academic coursework and personal projects, I continue developing skills in Web Development, Programming, Data Structures, Algorithms, Databases, Computer Networks, and Cyber Security.
+      </p>
+    </div>
+  </article>
+
+  <article class="education-item glass">
+    <div class="edu-year">2022–<br/>2024</div>
+    <div class="edu-content">
+      <h3>Higher Secondary Education (Class XII)</h3>
+      <div class="edu-school">Prince Academy, Sikar, Rajasthan</div>
+      <p class="edu-desc">
+        Completed Higher Secondary Education with Physics, Chemistry, and Mathematics (PCM). Developed strong analytical thinking, mathematical reasoning, and problem-solving abilities that later supported my interest in technology and engineering.
+      </p>
+    </div>
+  </article>
+
+  <article class="education-item glass">
+    <div class="edu-year">Before<br/>2022</div>
+    <div class="edu-content">
+      <h3>Secondary Education (Class X)</h3>
+      <div class="edu-school">Rajasthan Board of Secondary Education (RBSE)</div>
+      <p class="edu-desc">
+        Completed secondary education under RBSE with a solid foundation in Mathematics and Science. These years helped develop logical thinking, discipline, and curiosity for learning, which continue to support my journey in Computer Science.
+      </p>
+    </div>
+  </article>
+
+</div>
+
+  </div>
+</section>
+
+
+    <!-- ══ SKILLS TABLE ═════════════════════════════════════ -->
+    <section class="section skills-table-section" aria-labelledby="skills-table-heading">
+      <div class="container">
+        <p class="tag">Technical Skills</p>
+        <h2 class="section-title" id="skills-table-heading">Skills Overview</h2>
+        <p class="section-subtitle">A transparent breakdown of what I know, how well I know it, and where I'm actively growing.</p>
+
+        <div class="skills-table-wrap">
+          <table class="skills-table" role="table" aria-label="Technical skills table">
+            <thead>
+              <tr>
+                <th scope="col">Skill / Technology</th>
+                <th scope="col">Category</th>
+                <th scope="col">Level</th>
+                <th scope="col">Proficiency</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HTML5</td>
+                <td>Web Frontend</td>
+                <td>Beginner–Intermediate</td>
+                <td>
+                  <div class="skill-level-bar" style="width:140px;">
+                    <div class="skill-level-fill" data-pct="65" style="width:65%"></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-sky">Learning</span></td>
+              </tr>
+              <tr>
+                <td>CSS3</td>
+                <td>Web Frontend</td>
+                <td>Beginner–Intermediate</td>
+                <td>
+                  <div class="skill-level-bar" style="width:140px;">
+                    <div class="skill-level-fill" data-pct="60" style="width:60%"></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-sky">Learning</span></td>
+              </tr>
+              <tr>
+                <td>JavaScript</td>
+                <td>Web Frontend</td>
+                <td>Beginner</td>
+                <td>
+                  <div class="skill-level-bar" style="width:140px;">
+                    <div class="skill-level-fill" data-pct="35" style="width:35%"></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-yellow">Exploring</span></td>
+              </tr>
+              <tr>
+                <td>Java</td>
+                <td>Programming</td>
+                <td>Beginner</td>
+                <td>
+                  <div class="skill-level-bar" style="width:140px;">
+                    <div class="skill-level-fill" data-pct="45" style="width:45%"></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-sky">Learning</span></td>
+              </tr>
+              <tr>
+                <td>C++</td>
+                <td>Programming</td>
+                <td>Beginner</td>
+                <td>
+                  <div class="skill-level-bar" style="width:140px;">
+                    <div class="skill-level-fill" data-pct="40" style="width:40%"></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-sky">Learning</span></td>
+              </tr>
+              <tr>
+                <td>Responsive Design</td>
+                <td>Web Design</td>
+                <td>Beginner–Intermediate</td>
+                <td>
+                  <div class="skill-level-bar" style="width:140px;">
+                    <div class="skill-level-fill" data-pct="58" style="width:58%"></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-sky">Learning</span></td>
+              </tr>
+              <tr>
+                <td>Git &amp; GitHub</td>
+                <td>Version Control</td>
+                <td>Beginner</td>
+                <td>
+                  <div class="skill-level-bar" style="width:140px;">
+                    <div class="skill-level-fill" data-pct="30" style="width:30%"></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-yellow">Exploring</span></td>
+              </tr>
+              <tr>
+                <td>VS Code</td>
+                <td>Tooling</td>
+                <td>Comfortable</td>
+                <td>
+                  <div class="skill-level-bar" style="width:140px;">
+                    <div class="skill-level-fill" data-pct="72" style="width:72%"></div>
+                  </div>
+                </td>
+                <td><span class="badge badge-green">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ LEARNING JOURNEY ═════════════════════════════════ -->
+    <section class="section journey-section" aria-labelledby="journey-heading">
+      <div class="container">
+        <p class="tag">My Path</p>
+        <h2 class="section-title" id="journey-heading">Learning Journey &amp; Goals</h2>
+        <p class="section-subtitle">Where I started, where I am, and where I'm heading as a developer.</p>
+
+        <div class="journey-grid">
+          <div class="journey-card glass">
+            <span class="journey-icon">🌱</span>
+            <h3>How It Started</h3>
+            <p>
+              My interest in web development sparked when I first inspected the source code of a website in a browser — I couldn't believe that readable text in a text editor could produce something that looked that good. I started with the basics: a simple page with a heading, a paragraph, and some colour. That was enough to get me hooked.
+            </p>
+          </div>
+
+          <div class="journey-card glass">
+            <span class="journey-icon">📚</span>
+            <h3>How I'm Learning</h3>
+            <p>
+              I learn through a mix of official documentation (MDN Web Docs is my most-visited site), YouTube tutorials, and most importantly, building things. I find that reading about CSS Grid makes sense only after I've struggled to recreate a layout I admired. The struggle is where the learning actually happens.
+            </p>
+          </div>
+
+          <div class="journey-card glass">
+            <span class="journey-icon">🎯</span>
+            <h3>Short-Term Goals</h3>
+            <p>
+              In the next six months, I want to become genuinely solid at JavaScript — not just DOM manipulation, but understanding how the language actually works: closures, event loops, promises, and asynchronous patterns. I'm also going to build five complete projects to put in my portfolio.
+            </p>
+          </div>
+
+          <div class="journey-card glass">
+            <span class="journey-icon">🚀</span>
+            <h3>Long-Term Vision</h3>
+            <p>
+              My goal is to become a full-stack web developer within three years — someone who can build and deploy a complete web application from a database schema to a polished user interface. I see frontend as the foundation, and I plan to add Node.js, databases, and eventually a backend framework once that foundation is solid.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CTA ════════════════════════════════════════════ -->
+    <section class="cta-section" aria-labelledby="about-cta-heading">
+      <div class="container">
+        <p class="tag">Let's Connect</p>
+        <h2 class="section-title" id="about-cta-heading">Interested in working together?</h2>
+        <p class="section-subtitle">
+          I'm actively looking for internship opportunities where I can contribute, learn, and grow as a developer.
+        </p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary">Contact Me →</a>
+          <a href="services.html" class="btn btn-outline">My Services</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">GM<span>.</span></a>
+          <p>Aspiring web developer building clean, responsive websites with HTML, CSS &amp; JavaScript.Currently pursuing a Web Development Internship at ApexPlanet and continuously improving my frontend development skills.</p>
+          <div class="footer-social">
+            <a href="https://github.com/gautammewara75" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">⌨</a>
+            <a href="https://linkedin.com/in/gautammewara75" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Static Websites</a></li>
+            <li><a href="services.html">Responsive Design</a></li>
+            <li><a href="services.html">Portfolio Sites</a></li>
+            <li><a href="services.html">Landing Pages</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:gautammewara75@gmail.com">gautammewara75@gmail.com</a></li>
+            <li><span>Phone: Available on Request</span></li>
+            <li><a href="contact.html">Send a message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Gautam Mewara. All rights reserved.</p>
+        <p>Designed and Developed by <a href="about.html">Gautam Mewara</a> — Made with HTML &amp; CSS</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
