@@ -51,6 +51,10 @@
   }
 
   /* ── Fetch weather from OpenWeatherMap ────────────────────── */
+   const keyMissing =
+  typeof API_KEY === 'undefined' ||
+  !API_KEY ||
+  API_KEY === 'YOUR_OPENWEATHER_API_KEY';
   async function fetchWeather(city) {
     if (keyMissing) {
       showError('No API key found. Please add your OpenWeatherMap key to js/config.js and reload.');
