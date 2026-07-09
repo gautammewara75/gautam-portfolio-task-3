@@ -12,4 +12,4 @@
    The free tier (Current Weather Data) is all that is needed.
    ============================================================ */
 
-const API_KEY = "YOUR_OPENWEATHER_API_KEY";
+const API_KEY = "bd6531e5c7a20428a5b6c65f4f1a4266";
