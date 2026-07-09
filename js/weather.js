@@ -16,12 +16,6 @@
 
   if (!form) return; // not on the tools page
 
-  /* ── Check API key ────────────────────────────────────────── */
-  const keyMissing = (typeof API_KEY === 'undefined') || API_KEY === 'YOUR_OPENWEATHER_API_KEY' || !API_KEY.trim();
-  if (keyMissing && apiMissing) {
-    apiMissing.hidden = false;
-  }
-
   /* ── Result field refs (inside resultBox) ─────────────────── */
   const elIcon   = document.getElementById('w-icon');
   const elTemp   = document.getElementById('w-temp');
